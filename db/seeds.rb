@@ -8,15 +8,19 @@
 
 puts "Cleaning database..."
 Restaurant.destroy_all
+puts "database is clean"
 
 puts "Creating restaurants..."
 
 10.times do
-  Restaurant.create(
+  restaurant = Restaurant.create(
     name: Faker::Restaurant.name,
     address: Faker::Address.street_address,
     phone_number: Faker::PhoneNumber.cell_phone,
     category: ["chinese", "italian", "japanese", "french", "belgian"].sample,
     rating: rand(1..5)
     )
+  puts "restaurant #{restaurant.id} is created"
 end
+
+puts "done"
